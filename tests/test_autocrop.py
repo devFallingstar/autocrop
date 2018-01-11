@@ -4,8 +4,27 @@
 
 import cv2
 import numpy as np
+import os
+import shutil
 
 from autocrop.autocrop import gamma, crop
+
+
+
+
+# Define directory change within context
+@contextmanager
+def integration(newdir):
+    prevdir = os.getcwd()
+    os.chdir(os.path.expanduser(newdir))
+    # copy files over to integration/
+    shutil.copytree(
+
+    try:
+        yield
+    finally:
+        os.chdir(prevdir)
+        # delete the temporary folder
 
 
 def test_gamma_can_do_sqrt():

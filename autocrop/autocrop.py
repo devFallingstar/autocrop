@@ -118,7 +118,9 @@ def main(path, fheight, fwidth):
     2) create face-cropped versions and place them in `path/crop`
     """
     errors = 0
+    paths = ['crop', 'bkp']
     with cd(path):
+        os.makedirs(paths, exist_ok=True)
         files_grabbed = []
         for files in INPUT_FILETYPES:
             files_grabbed.extend(glob.glob(files))
